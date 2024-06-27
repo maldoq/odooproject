@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="hotel_employe_view_form" model="ir.ui.view">
+            <field name="name">hotel_employe.view.form</field>
+            <field name="model">hotel.employe</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group string="Présentation">
+                                <field name="name" />
+                                <field name="firstname" />
+                            </group>
+                            <group string="Information personnelle">
+                                <field name="birthday" />
+                                <field name="contact" />
+                                <field name="email" />
+                            </group>
+                            <group string="Espace de travail">
+                                <field name="building_id" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hotel_employe_view_tree" model="ir.ui.view">
+            <field name="name">hotel_employe.view.tree</field>
+            <field name="model">hotel.employe</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="firstname" />
+                    <field name="birthday" />
+                    <field name="contact" />
+                    <field name="email" />
+                    <field name="building_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hotel_employe_action" model="ir.actions.act_window">
+            <field name="name">Action Name</field>
+            <field name="res_model">hotel.employe</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="staff_menu"
+            name="Staff"
+            parent="hotel_menu"
+            sequence="10"/>
+
+        <menuitem
+            id="hotel_employe_menu"
+            name="Employé"
+            action="hotel_employe_action"
+            parent="staff_menu"
+            sequence="10"/>
+    
+    </data>
+    
+
+</odoo>

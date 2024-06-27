@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="hotel_service_view_form" model="ir.ui.view">
+            <field name="name">hotel_service.view.form</field>
+            <field name="model">hotel.service</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group string="Présentation">
+                                <field name="name" />
+                                <field name="description" />
+                            </group>
+                            <group string="Prix">
+                                <field name="base_price" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hotel_service_view_tree" model="ir.ui.view">
+            <field name="name">hotel_service.view.tree</field>
+            <field name="model">hotel.service</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="base_price" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hotel_service_action" model="ir.actions.act_window">
+            <field name="name">Action Name</field>
+            <field name="res_model">hotel.service</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="hotel_service_menu"
+            name="Services"
+            action="hotel_service_action"
+            parent="staff_menu"
+            sequence="10"/>
+    
+    </data>
+    
+
+</odoo>

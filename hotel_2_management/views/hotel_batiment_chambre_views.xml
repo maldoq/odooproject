@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="hotel_batiment_chambre_view_form" model="ir.ui.view">
+            <field name="name">hotel_batiment_chambre.view.form</field>
+            <field name="model">hotel.batiment.chambre</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group string="Aperçu">
+                                <field name="image" widget="image"/>
+                            </group>
+                            <group string="Présentation">
+                                <field name="nom"/>
+                                <field name="description"/>
+                            </group>
+                            <group string="Information">
+                                <field name="place_number"/>
+                                <field name="base_price"/>
+                            </group>
+                            <group string="Dépendance">
+                                <field name="building_id" />
+                                <field name="type_id" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hotel_batiment_chambre_view_tree" model="ir.ui.view">
+            <field name="name">hotel_batiment_chambre.view.tree</field>
+            <field name="model">hotel.batiment.chambre</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                    <field name="nom"/>
+                    <field name="description"/>
+                    <field name="place_number"/>
+                    <field name="base_price"/>
+                    <field name="building_id"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hotel_batiment_chambre_action" model="ir.actions.act_window">
+            <field name="name">Chambres</field>
+            <field name="res_model">hotel.batiment.chambre</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+        id="hotel_batiment_chambre_menu"
+        name="Chambres"
+        parent="hotel_batiment_components_menu"
+        action="hotel_batiment_chambre_action"
+        sequence="20"/>
+    
+    </data>
+    
+
+</odoo>

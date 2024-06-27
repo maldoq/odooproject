@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="hotel_reservation_view_form" model="ir.ui.view">
+            <field name="name">hotel_reservation.view.form</field>
+            <field name="model">hotel.reservation</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <group string="Client">
+                                <field name="client_id" />
+                            </group>
+                            <group string="Infrastructure réservé">
+                                <field name="bedroom_id" />
+                                <field name="space_id" />
+                            </group>
+                            <group string="Date">
+                                <field name="start_date" />
+                                <field name="end_date" />
+                            </group>
+                            <group string="Montant">
+                                <field name="amount" />
+                                <field name="state" />
+                                <field name="rest_amount" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Paiements">
+                                <field name="payment_ids">
+                                    <tree string="Paiements">
+                                        <field name="id" />
+                                        <field name="name"/>
+                                        <field name="pay_amount" />
+                                        <field name="journal_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hotel_reservation_view_tree" model="ir.ui.view">
+            <field name="name">hotel_reservation.view.tree</field>
+            <field name="model">hotel.reservation</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="client_id" />
+                    <field name="bedroom_id" />
+                    <field name="space_id" />
+                    <field name="amount" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="state" />
+                    <field name="rest_amount" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hotel_reservation_action" model="ir.actions.act_window">
+            <field name="name">Réservation</field>
+            <field name="res_model">hotel.reservation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="reservations_menu"
+            name="Réservation"
+            parent="hotel_menu"
+            sequence="10"/>
+
+        <menuitem
+            id="reservation_item_menu"
+            name="Réservations"
+            action="hotel_reservation_action"
+            parent="reservations_menu"
+            sequence="10"/>
+    
+    </data>
+    
+
+</odoo>

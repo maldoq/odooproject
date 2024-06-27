@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data >
+    
+        <record id="hotel_batiment_view_form" model="ir.ui.view">
+            <field name="name">hotel_batiment.view.form</field>
+            <field name="model">hotel.batiment</field>
+            <field name="arch" type="xml">
+                <form string="Batiment Form">
+                    <sheet>
+                        <group>
+                            <group string="Aperçu">
+                                <field name="image" widget="image"/>
+                            </group>
+                            <group string="Présentation">
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                            <group string="Information sur les chambres">
+                                <field name="free_bedrooms"/>
+                                <field name="max_bedrooms"/>
+                                <field name="number_stage"/>
+                            </group>
+                            
+                        </group>
+                        <notebook>
+                            <page string="Chambres">
+                                <field name="chambre_ids">
+                                    <tree string="Chambres">
+                                        <field name="id" />
+                                        <field name="name"/>
+                                        <field name="nom" />
+                                        <field name="description"/>
+                                        <field name="place_number"/>
+                                        <field name="base_price"/>
+                                        <field name="building_id"/>
+                                        <field name="type_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        <group string="Création automatique">
+                            <div class="oe_button_box" name="button_box">
+                                <button name="action_generate_rooms" string="Générer des chambres" type="object" class="oe_stat_button"/>
+                            </div>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hotel_batiment_view_tree" model="ir.ui.view">
+            <field name="name">hotel_batiment.view.tree</field>
+            <field name="model">hotel.batiment</field>
+            <field name="arch" type="xml">
+                <tree string="Batiments">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="free_bedrooms"/>
+                    <field name="max_bedrooms"/>
+                    <field name="number_stage"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hotel_batiment_action" model="ir.actions.act_window">
+            <field name="name">Batiments</field>
+            <field name="res_model">hotel.batiment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="hotel_menu"
+            name="Gestion d'hotel"
+            web_icon = "hotel_management,static/description/icon.png"
+            sequence="10"/>
+
+        <menuitem
+            id="hotel_batiment_components_menu"
+            name="Batiments et dépendances"
+            parent="hotel_menu"
+            sequence="10"/>
+
+        <menuitem
+            id="hotel_batiment_menu"
+            name="Batiments"
+            action="hotel_batiment_action"
+            parent="hotel_batiment_components_menu" 
+            sequence="10"/>
+    
+    </data>
+    
+
+</odoo>
